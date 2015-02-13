@@ -1,4 +1,5 @@
 #Ruby cheatsheet
+#http://repos.f-games.jp/users/sign_in
 
 #variables
 x = 10
@@ -73,6 +74,16 @@ fruits.each do |fruit|
   puts "A fruit of type: #{fruit}"
 end
 
+players = [12, 32 , 434]
+
+players.each do |p|
+  puts "players #s are " + p.to_s
+end
+
+players.each {|x| puts "#{x * x}"}
+
+players.each {|player| puts player}
+
 # also we can go through mixed lists too
 # note this is yet another style, exactly like above
 # but a different syntax (way to write it).
@@ -90,6 +101,82 @@ end
 
 # now we can print them out too
 elements.each {|i| puts "Element was: #{i}" }
+
+#while loop
+i = 0
+numbers = []
+
+while i < 6
+  puts "At the top i is #{i}"
+  numbers.push(i)
+
+  i += 1
+  puts "Numbers now: ", numbers
+  puts "At the bottom i is #{i}"
+end
+
+puts "The numbers: "
+
+# remember you can write this 2 other ways?
+numbers.each {|num| puts num }
+
+=begin
+#Active record notes for Zombie
+
+#getting the data
+#Zombie database
+
+Zombie.last   
+Zombie.first   
+Zombie.all 
+Zombie.count
+
+#updating data
+z = Zombie.find(3)
+z.graveyard = 'Chapel Hill blah'
+z.save
+
+#deleting a record 
+Zombie.find(3).delete
+
+#MODELS
+
+class Zombie < ActiveRecord::Base
+  # insert validation here
+end
+
+#validation
+validates :name, presence: true
+
+validates :name, presence: true, uniqueness: true
+
+#Types of Associations
+
+    belongs_to
+    has_one
+    has_many
+    has_many :through
+    has_one :through
+    has_and_belongs_to_many
+
+
+#creating a weapon that belongs to a zombie
+
+class Weapon <ActiveRecord::Base
+  belongs_to :zombie
+end
+
+#finding a weapon belonging to the first zombie
+Zombie.find.first.weapons
+#alternatively
+Zombie.fin­d_by(name:­ 'Ash'­).weapons 
+
+#VIEWS
+
+
+
+
+=end
 
 
 
